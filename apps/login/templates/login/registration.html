@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>The Kitchen Sync</title>
+    {% load static %}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Permanent+Marker|Poppins" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'login/css/login.css' %}">
+    <!-- <link rel="stylesheet" href="login.css"> -->
+</head>
+
+<body>
+    <div class="container">
+        <h1><span>T</span>the<span>K</span>itchen<span>S</span>ync</h1>
+        <div class='login'>
+            {% for message in messages %}
+            <p style="color: rgb(206, 18, 18); font-weight: bold;">{{message}}</p>
+            {% endfor %}
+            <form action="/regiValidation" method="POST">
+                {% csrf_token %}
+                <p  style="color: rgb(170, 170, 170)">must be at least 4 characters long</p>
+                <input type="text" name="userName" placeholder="username">
+                <input type="text" name="fName" placeholder="first name">
+                <input type="text" name="lName" placeholder="last name">
+                <input type="text" name="email" placeholder="email">
+                <p style="color: rgb(170, 170, 170)">*password must be at least 8 characters</p>
+                <input type="password" name="password" placeholder="password">
+                <input type="password" name="confPassword" placeholder="confirm password">
+                <input id="submit" type="submit" value="submit">
+                <p>Already registerd? <a href="/"> Login</a></p>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

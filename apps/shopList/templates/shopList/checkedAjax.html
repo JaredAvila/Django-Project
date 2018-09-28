@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>The Kitche Sync</title>
+    {% load static %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <h1 class="title">Checked Off</h1>
+    <ul>
+        {% for check in checked %}
+        <a href="/shop/unCheck/{{ check.id }}">
+            <li title="Un-check item">{{ check.name }} <button style="margin-left: 10px; border-radius: 8px; border: none; padding: 5px; background-color: rgb(129, 29, 29);"
+                    title="delete for good?" type="button"><a href="/shop/delete/{{ check.id }}" style="cursor: pointer; text-decoration: none;">Delete
+                        for good</a></button></form>
+            </li>
+        </a>
+        {% endfor %}
+    </ul>
+</body>
+
+</html>

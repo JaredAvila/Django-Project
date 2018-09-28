@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    {% load static %}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+        crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Permanent+Marker|Poppins" rel="stylesheet">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://developer.edamam.com/attribution/badge.js"></script>
+    <link rel="stylesheet" href="{% static 'sync/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'sync/css/results.css' %}">
+</head>
+
+<body>
+    <div class='container-fluid'>
+        <div id="topMenu">
+            <div style="display: flex;">
+                <h1><a href="/home"><span style="color: #da8943; font-family: 'Permanent Marker', cursive; text-shadow: 2px 2px 2px black;">TKS</span></a></h1>
+                <h1>{{ request.session.userName }}</h1>
+            </div>
+            <div id="links">
+                <a href="/home">
+                    <p class="bttn bttnCrm">Home</p>
+                </a>
+                <a href="/home/logout">
+                    <p class="bttn bttnRed">Logout</p>
+                </a>
+            </div>
+        </div>
+        <div class=container>
+            <div id="nav">
+                <form id="prev" action="/home/prevRecipe" method="POST">
+                    {% csrf_token %}
+                    <input class="bttn bttnCrm" type="submit" value='<< PREV'>
+                </form>
+                <h1>Search Results</h1>
+                <form id="next" action="/home/nextRecipe" method="POST">
+                    {% csrf_token %}
+                    <input class="bttn bttnGrn" type="submit" value='NEXT >>'>
+                </form>
+            </div>
+            <div id="recipe">
+                <form id="addRecipe" action="/home/addRecipe" method="POST">
+                    {% csrf_token %}
+                    <input type="hidden" name="name" value="{{ request.session.currentName }}">
+                    <input type="hidden" name="image" value="{{ request.session.currentImage }}">
+                    <input type="hidden" name="ingr" value="{{ request.session.currentIngr }}">
+                    <input type="hidden" name="url" value="{{ request.session.currentUrl }}">
+                    <input type="hidden" name="serve" value="{{ request.session.currentServe }}">
+                    <button class="bttn bttnGrn">Add to RecipeBox</button>
+                </form>
+                {% for error in messages %}
+                <p style="color:rgb(52, 143, 49); font-weight: bold; font-size:16pt; text-decoration: underline;">{{
+                    error }}</p>
+                {% endfor %}
+                <h1 style="color:#da8943; font-weight: bold">{{ request.session.currentName }}</h1>
+                <img src="{{ request.session.currentImage }}" alt="">
+                <h3 style='color:#da8943'>Serves: {{ request.session.currentServe }}</h3>
+                <h2>Ingredients:</h2>
+                <ul>
+                    {% for item in request.session.currentIngr %}
+                    <li>{{ item }}</li>
+                    {% endfor %}
+                </ul>
+                <a href="{{ request.session.currentUrl }}" target="_blank">
+                    <p style="width: fit-content; margin: auto;" class="bttn bttnRed">Click for directions</p>
+                </a>
+            </div>
+            Search Results
+            <div id="edamam-badge" data-color="white"></div>
+        </div>
+
+    </div>
+
+    <script>
+        $('document').ready(function () {
+            $('#next').submit(function (e) {
+                console.log('in jquery')
+                e.preventDefault()
+                console.log('beofre ajax')
+                $.ajax({
+                    url: $(this).attr('action'),
+                    method: 'post',
+                    data: $(this).serialize(),
+                    success: function (serverResponse) {
+                        $('#recipe').html(serverResponse)
+                    }
+                })
+
+            })
+            $('#prev').submit(function (e) {
+                console.log('in jquery')
+                e.preventDefault()
+                console.log('beofre ajax')
+                $.ajax({
+                    url: $(this).attr('action'),
+                    method: 'post',
+                    data: $(this).serialize(),
+                    success: function (serverResponse) {
+                        $('#recipe').html(serverResponse)
+                    }
+                })
+
+            })
+            $('#addRecipe').submit(function (e) {
+                console.log('in jquery')
+                e.preventDefault()
+                console.log('beofre ajax')
+                $.ajax({
+                    url: $(this).attr('action'),
+                    method: 'post',
+                    data: $(this).serialize(),
+                    success: function (serverResponse) {
+                        $('#recipe').html(serverResponse)
+                    }
+                })
+
+            })
+
+
+        })
+
+    </script>
+
+    <script src="{% static 'sync/javascript/sync.js' %}"></script>
+</body>
+
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>The Kitchen Sync</title>
+    {% load static %}
+    <link href="https://fonts.googleapis.com/css?family=Permanent+Marker|Poppins" rel="stylesheet">
+    <link rel="stylesheet" href="{% static '/shopList/css/shop.css' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div id="list">
+            <form id="add" action="/shop/add2List" method="POST">
+                {% csrf_token %}
+                <input class="inputs inputsRed" name="name" type="text" placeholder="add new item">
+                <input id="addBttn" class="bttn bttnGrn" type="submit" value="+">
+            </form>
+            {% for message in messages %}
+            <p style="color: rgb(194, 26, 26); font-weight: bold;">{{ message }}</p>
+            {% endfor %}
+            <h1 class="title">{{ request.session.userName }}'s Shopping List</h1>
+            <div id="listAjax">
+                <ol>
+                    {% for item in items %}
+                    <li>
+                        <form class="removeItem" action="/shop/remove/{{ item.id }}" method="POST">
+                            {% csrf_token %}
+                            <input id="listItem" class="ivsbl" type="submit" value="{{ item.name }}">
+                        </form>
+                    </li>
+                    {% endfor %}
+                </ol>
+            </div>
+        </div>
+        <div id="checked">
+            <h1 class="title">Checked Off</h1>
+            <ul>
+                {% for check in checked %}
+                <li style="display: flex;">
+                    <form id="unCheck" action="/shop/unCheck/{{ check.id }}" method="POST">
+                        {% csrf_token %}
+                        <input id="checkedOff" title="Un-check item" class="ivsbl strike" type="submit" value="{{ check.name }}">
+                    </form>
+                    <form id="deleteItem" action="/shop/delete/{{ check.id }}" method="POST">
+                        {% csrf_token %}
+                        <input title="Delete for good???" type="submit" class="shopBtn bttnRed" value="Delete">
+                    </form>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <div id="foot-nav">
+        <div id="left">
+            <a href="/home">Home</a>
+            <a href="/home/logout">Logout</a>
+        </div>
+        <div id="right">
+            <h1><span>T</span>he<span>K</span>itchen<span>S</span>ync</h1>
+        </div>
+    </div>
+    <script src="{% static '/shopList/javascript/shop.js' %}"></script>
+</body>
+
+</html>

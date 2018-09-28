@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>The Kitche Sync</title>
+    {% load static %}
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
+</head>
+
+<body>
+    <form id="addRecipe" action="/home/addRecipe" method="POST">
+        {% csrf_token %}
+        <input type="hidden" name="name" value="{{ request.session.currentName }}">
+        <input type="hidden" name="image" value="{{ request.session.currentImage }}">
+        <input type="hidden" name="ingr" value="{{ request.session.currentIngr }}">
+        <input type="hidden" name="url" value="{{ request.session.currentUrl }}">
+        <input type="hidden" name="serve" value="{{ request.session.currentServe }}">
+        <button class="bttn bttnRed" style="margin-top: 20px;">Add to RecipeBox</button>
+    </form>
+    {% for error in messages %}
+    <p style="color:rgb(52, 143, 49); font-weight: bold; font-size:16pt; text-decoration: underline;">{{ error }}</p>
+    {% endfor %}
+    <h1 style="color:#da8943; font-weight: bold">{{ request.session.currentName }}</h1>
+    <img src="{{ request.session.currentImage }}" alt="">
+    <h3 style='color:#da8943'>Serves: {{ request.session.currentServe }}</h3>
+    <h2>Ingredients:</h2>
+    <ul>
+        {% for item in request.session.currentIngr %}
+        <li>{{ item }}</li>
+        {% endfor %}
+    </ul>
+    <a href="{{ request.session.currentUrl }}" target="_blank">
+        <p style="width: fit-content; margin: auto;" class="bttn bttnRed">Click for directions</p>
+    </a>
+
+    <script>
+        $('#addRecipe').submit(function (e) {
+            e.preventDefault()
+            $.ajax({
+                url: $(this).attr('action'),
+                method: 'post',
+                data: $(this).serialize(),
+                success: function (serverResponse) {
+                    $('#recipe').html(serverResponse)
+                }
+            })
+
+        })
+    </script>
+</body>
+
+</html>

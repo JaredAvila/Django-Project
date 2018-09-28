@@ -1,0 +1,46 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.container-fluid{
+    background: url(../images/bread-brunch-candle-1345190.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: gray;
+}
+
+#profileView{
+    padding: 40px;
+    background-color: rgb(59, 59, 59);
+    color: rgb(221, 221, 221);
+    width: fit-content;
+    margin-left: auto;
+    margin-right: 50px;
+    margin-top: 115px;
+    margin-bottom: 115px;
+    border-radius: 8px;
+    box-shadow: 2px 2px 2px black;
+    text-align: center;
+}
+
+#profileView img{
+    height: 450px;
+}
+
+span{
+    color: #da8943;
+    font-weight: bold;
+}
+
+.little{
+    font-size: 16pt;
+}
+
+.big{
+    font-size: 36pt;
+}
+
+input{
+    margin-bottom: 10px;
+}

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    {% load static %}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+        crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Permanent+Marker|Poppins" rel="stylesheet">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://developer.edamam.com/attribution/badge.js"></script>
+    <link rel="stylesheet" href="{% static 'sync/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'sync/css/results.css' %}">
+</head>
+
+<body>
+    <div class='container-fluid'>
+        <div id="topMenu">
+            <div style="display: flex;">
+                <h1><a href="/home"><span style="color: #da8943; font-family: 'Permanent Marker', cursive; text-shadow: 2px 2px 2px black;">TKS</span></a></h1>
+                <h1>{{ request.session.userName }}</h1>
+            </div>
+            <div id="links">
+                <a href="/home">
+                    <p class="bttn bttnCrm">Home</p>
+                </a>
+                <a href="/home/logout">
+                    <p class="bttn bttnRed">Logout</p>
+                </a>
+            </div>
+        </div>
+        <div class=container>
+            <a href="/home/recipeBox"><button class="bttn bttnOrn">Recipe Box</button></a>
+            <div id="recipe">
+                <h1 style="color:#da8943; font-weight: bold">{{ request.session.viewName }}</h1>
+                <img src="{{ request.session.viewImage }}" alt="">
+                <h3 style='color:#da8943'>Serves: {{ request.session.viewServes }}</h3>
+                <h2>Ingredients:</h2>
+                <ul>
+                    {% for item in request.session.viewIngrs %}
+                    <li>{{ item }}</li>
+                    {% endfor %}
+                </ul>
+                <h2>Directions:</h2>
+                <ol style="text-align: left;">
+                {% for dirc in request.session.viewDirc %}
+                <li>{{ dirc }}</li>
+                {% endfor %}
+                </ol>
+                <form action="/home/wallPost" method="POST">
+                    {% csrf_token %}
+                    <button type="submit" style="margin-bottom: 10px;" class="bttn bttnOrn">Share to Sync</button>
+                    <input type="hidden" name="id" value="{{ request.session.viewId }}">
+                    <input type="hidden" name="post" value="Check it out!">
+                </form>
+                <form action="/home/addRecipeFromView/{{ request.session.viewId }}" method="POST">
+                    {% csrf_token %}
+                    <button type="submit" style="margin-bottom: 10px;" class="bttn bttnGrn">Add to box</button>
+                </form>
+                <a href="{{ request.session.viewUrl }}" target="_blank">
+                    <p style="width: fit-content; margin: auto;" class="bttn bttnRed">Click for directions</p>
+                </a>
+            </div>
+            Search Results
+            <div id="edamam-badge" data-color="white"></div>
+        </div>
+
+    </div>
+
+    <script>
+        $('document').ready(function () {
+            $('#next').submit(function (e) {
+                console.log('in jquery')
+                e.preventDefault()
+                console.log('beofre ajax')
+                $.ajax({
+                    url: $(this).attr('action'),
+                    method: 'post',
+                    data: $(this).serialize(),
+                    success: function (serverResponse) {
+                        $('#recipe').html(serverResponse)
+                    }
+                })
+
+            })
+            $('#prev').submit(function (e) {
+                console.log('in jquery')
+                e.preventDefault()
+                console.log('beofre ajax')
+                $.ajax({
+                    url: $(this).attr('action'),
+                    method: 'post',
+                    data: $(this).serialize(),
+                    success: function (serverResponse) {
+                        $('#recipe').html(serverResponse)
+                    }
+                })
+
+            })
+            $('#addRecipe').submit(function (e) {
+                console.log('in jquery')
+                e.preventDefault()
+                console.log('beofre ajax')
+                $.ajax({
+                    url: $(this).attr('action'),
+                    method: 'post',
+                    data: $(this).serialize(),
+                    success: function (serverResponse) {
+                        $('#recipe').html(serverResponse)
+                    }
+                })
+
+            })
+
+
+        })
+
+    </script>
+
+    <script src="{% static 'sync/javascript/sync.js' %}"></script>
+</body>
+
+</html>

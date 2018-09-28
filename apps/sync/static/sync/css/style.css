@@ -1,0 +1,126 @@
+.bttn{
+    border-radius: 8px;
+    padding: 15px;
+    font-size: 14pt;
+    outline: none;
+    box-shadow: 2px 2px 2px black;
+    transition: box-shadow 150ms;
+    
+}
+
+.bttn:active{
+    box-shadow: none;
+}
+
+.bttnRed{
+    background-color: #99181a;
+    border-top: 2px solid #aa3335;
+    border-left: 2px solid #aa3335;
+    border-bottom: 2px solid #6e1415;
+    border-right: 2px solid #6e1415;
+}
+
+.bttnRed:active{
+    background-color: #99181a;
+    border-top: 2px solid #6e1415;
+    border-left:  2px solid#6e1415;
+    border-bottom: 2px solid #aa3335;
+    border-right: 2px solid #aa3335;
+}
+
+.bttnCrm{
+    color: rgb(77, 59, 59);
+    background-color: #f0efb0;
+    border-top: 2px solid #ffffe2;
+    border-left: 2px solid #ffffe2;
+    border-bottom: 2px solid #cccb95;
+    border-right: 2px solid #cccb95;
+}
+
+.bttnCrm:active{
+    background-color: #f0efb0;
+    border-top: 2px solid #cccb95;
+    border-left:  2px solid#cccb95;
+    border-bottom: 2px solid #ffffe2;
+    border-right: 2px solid #ffffe2;
+}
+
+.bttnGrn{
+    color: rgb(204, 204, 204);
+    background-color: #2d4403;
+    border-top: 2px solid #486909;
+    border-left: 2px solid #486909;
+    border-bottom: 2px solid #1d2b03;
+    border-right: 2px solid #1d2b03;
+}
+
+.bttnGrn:active{
+    background-color: #2d4403;
+    border-top: 2px solid #1d2b03;
+    border-left:  2px solid#1d2b03;
+    border-bottom: 2px solid #486909;
+    border-right: 2px solid #486909;
+}
+
+.bttnOrn{
+    color: rgb(204, 204, 204);
+    background-color: #da8943;
+    border-top: 2px solid #ffb472;
+    border-left: 2px solid #ffb472;
+    border-bottom: 2px solid #ad6d34;
+    border-right: 2px solid #ad6d34;
+}
+
+.bttnOrn:active{
+    background-color: #da8943;
+    border-top: 2px solid #ad6d34;
+    border-left:  2px solid#ad6d34;
+    border-bottom: 2px solid #ffb472;
+    border-right: 2px solid #ffb472;
+}
+
+.inputs{
+    padding: 15px;
+    border: none;
+    outline: none;
+    font-size: 14pt;
+    margin-top: 10px;
+    border-radius: 8px;
+    transition: background-color .5s;
+}
+
+.inputsRed:focus{
+    background-color: #ffc4c5;
+}
+.inputsGrn:focus{
+    background-color: #cfdbb8;
+}
+.inputsCrm:focus{
+    background-color: #fafab9;
+}
+
+.inputsRed:hover{
+    background-color: #ffc4c5;
+}
+.inputsGrn:hover{
+    background-color: #cfdbb8;
+}
+.inputsCrm:hover{
+    background-color: #fafab9;
+}
+
+.orgSpn{
+    color: #da8943;
+    font-family: 'Permanent Marker', cursive;
+    font-size: 72pt;
+    text-shadow: 1px 1px 2px black;
+}
+
+.links{
+    color: rgb(90, 88, 88);
+    text-decoration: underline;
+}
+
+.links:hover{
+    color: rgb(90, 88, 88);
+}

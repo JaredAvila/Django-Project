@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>The Kitchen Sync</title>
+    {% load static %}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Permanent+Marker|Poppins" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'login/css/login.css' %}">
+    <!-- <link rel="stylesheet" href="login.css"> -->
+</head>
+
+<body>
+    <div class="container">
+        <h1><span>T</span>the<span>K</span>itchen<span>S</span>ync</h1>
+        <div class='login'>
+            {% for error in messages %}
+            <p style="color:rgb(190, 44, 44); font-weight: bold;">{{ error }}</p>
+            {% endfor %}
+            <form action="/loginValidation" method="POST">
+                {% csrf_token %}
+                <input type="text" name="userName" placeholder="username">
+                <input type="password" name="password" placeholder="password">
+                <input id="submit" type="submit" value="login">
+            </form>
+            <p><a href="/regi">Create new account</a></p>
+            <p><a>Login help</a></p>
+        </div>
+    </div>
+</body>
+
+</html>

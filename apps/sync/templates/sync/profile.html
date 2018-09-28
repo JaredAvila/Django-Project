@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>The Kitchen Sync</title>
+    {% load static %}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+        crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Permanent+Marker|Poppins" rel="stylesheet">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="{% static 'sync/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'sync/css/sync.css' %}">
+    <link rel="stylesheet" href="{% static 'sync/css/profile.css' %}">
+</head>
+
+<body>
+    <div id="cover">
+        <div class="container-fluid">
+            <div class="nav">
+                <h1><a href="/home">TKS</a></h1>
+                <div id="menus">
+                    <div>
+                        <button id="recipe" class="bttn bttnRed">Recipe Box</button>
+                        <ul id="recipeMenu" class="dropdown">
+                            <li><a href="/home/recipeBox">Go to Recipe Box</a></li>
+                            <li><a href="/home/createRecipe/">Add new reicpe</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <button id="profile" class="bttn bttnCrm" style="color: rgb(77, 59, 59);">Profile</button>
+                        <ul id="profileMenu" class="dropdown">
+                            <li><a href="/home/viewProfile/{{ request.session.id }}">View Profile</a></li>
+                            <li><a href="/home/editProfile/{{ request.session.id }}">Edit Profile</a></li>
+                            <li><a href="/home/logout">Logout</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <button id="shop" class="bttn bttnGrn">Shopping List</button>
+                        <form id="shopMenu" style="width: 250px; overflow: auto; height: 450px;" action="">
+                            {% csrf_token %}
+                            <ul class="dropdown">
+                                <li><a style="font-weight: bold; font-size: 14pt; color:#da8943;" href="/shop">Edit
+                                        List</a></li>
+                                <li class="instruc">click to remove items</li>
+                                {% for item in items %}
+                                <li style="display: flex;">
+                                    <form action="/shop/removeSync/{{ item.id }}" method="POST" class='itemRemove'>
+                                        {% csrf_token %}
+                                        <input class="clearBtn" name='name' type="submit" value="{{ item.name }}">
+                                    </form>
+                                </li>
+                                {% endfor %}
+                                <li>
+                                    <form id="addItemSync" action="/shop/add2ListSync" method="POST">
+                                        {% csrf_token %}
+                                        <input class="shoppingInput" type="text" name="name" placeholder="+Add new item">
+                                        <input type="submit" class="bttn bttnGrn shoppingInput" value="submit">
+                                    </form>
+                                </li>
+                            </ul>
+                        </form>
+                    </div>
+                </div>
+                <div id="rightNav">
+                    <p><a id="name" href="/home/viewProfile/{{ request.session.id }}">{{ request.session.userName }}</a></p>
+                    <a href="/home/viewProfile/{{ request.session.id }}"><img src="{% static 'sync/images/userAvatar.png' %}"></a>
+                </div>
+
+            </div>
+            <div id="profileView">
+                <img src="{% static '/sync/images/userAvatar.png' %}" alt="">
+                <h1>Username: <span class="big">{{ request.session.userName }}</span></h1>
+                <div id="profileInfo">
+                    <p>Name: <span class="little">{{ request.session.profilefName }} {{ request.session.profilelName }}</span></p>
+                    <p>Email: <span class="little">{{ request.session.profileEmail }}</span></p>
+                </div>
+                <form action="/home/editProfile/{{ request.session.id }}" method="POST">
+                    {% csrf_token %}
+                    <input type="submit" name='edit' class="bttn bttnGrn" value="Edit">
+                </form>
+            </div>
+
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="{% static 'sync/javascript/sync.js' %}"></script>
+</body>
+
+</html>

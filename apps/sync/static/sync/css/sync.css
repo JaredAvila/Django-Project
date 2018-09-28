@@ -1,0 +1,392 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.container-fluid{
+    background-image: linear-gradient(rgb(105, 179, 123), rgb(255, 251, 215), rgb(204, 164, 147));
+    width: 100%;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+#showcase{
+    background: url(../images/mainBack.jpeg);
+    background-size: cover;
+    background-attachment: fixed;
+    width: 100%;
+    height: 600px;;
+}
+
+.nav{
+    display: flex;
+    position: fixed;
+    background-color: rgb(46, 46, 46);
+    opacity: .97;
+    width: 100%;
+    z-index: 1;
+}
+
+.nav h1{
+    height: fit-content;
+    padding: 0 30px;
+    margin-left: 15px;
+    border: 2px solid black;
+    font-family: 'Permanent Marker', cursive;
+    border-radius: 8px;
+}
+
+.nav h1 a{
+    text-decoration: none;
+    color: black;
+    font-size: 36pt;
+    transition: color 1s, text-shadow 1s;
+    width: fit-content;
+}
+
+.nav h1 a:hover{
+    cursor: pointer;
+    color: #da8943;
+    text-shadow: 2px 2px 2px black;
+}
+
+#rightNav{
+    margin-left: auto;
+    padding: 10px;
+}
+
+#rightNav img{
+    height: 60px;
+    border: 2px solid rgb(204, 204, 204);
+    border-radius: 50%;
+}
+
+#rightNav p{
+    display: inline-block;
+    margin-right: 25px;
+}
+
+a#name{
+    color: rgb(204, 204, 204);
+    font-size: 16pt;
+    letter-spacing: 6px;
+    transition: color 150ms;
+}
+
+a#name:hover{
+    color: #aa3335;
+    text-decoration: none;
+}
+
+#menus{
+    margin:auto;
+    margin-bottom: 20px;
+}
+
+#menus div{
+    display: inline-block;
+    vertical-align: top;
+}
+
+#menus button{
+    margin-top: 15px;
+    margin-left: 5px;
+    margin-right: 5px;
+    color: rgb(204, 204, 204);
+}
+
+#menus div ul{
+    background-color: rgb(204, 204, 204);
+    border-radius: 8px;
+    margin: 0 7px;
+}
+
+#menus div ul li{
+    display: block;
+    padding: 10px 0;
+    padding-left: 10px;
+    background-color: rgb(204, 204, 204);
+    border-radius: 8px;
+    transition: background-color 300ms;
+}
+
+#menus div ul li:hover{
+    display: block;
+    padding: 10px 0;
+    padding-left: 10px;
+    background-color: #cfdbb8;
+    border-radius: 8px;
+}
+
+#menus div ul li{
+    cursor: default;
+}
+
+#menus div ul li a{
+    color: black;
+    padding: 5px;
+    text-decoration: none;
+}
+
+.shoppingInput{
+    border-radius: 8px;
+    margin-bottom: 8px;
+    padding: 5px;
+    outline: none;
+}
+
+#recipeSearch{
+    padding: 50px;
+    width: 70%;
+    background-color: rgb(90, 88, 88);
+    top: 25%;
+    left: 15%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    border-radius: 8px;
+    box-shadow: 3px 3px 5px black;
+    /* opacity: .98; */
+}
+
+#recipeSearchForm{
+    display: flex;
+}
+
+#recipeSearchForm input, #recipeSearchForm button{
+    margin-left: 10px;
+}
+
+#shopMenu, #recipeMenu, #profileMenu{
+    display: none;
+    position: absolute;
+}
+
+#recipeSearch h2{
+    color: #e4e8e6;
+    font-size: 30pt;
+    margin-bottom: 70px;
+}
+
+#recipeSearch p{
+    color: #e4e8e6;
+    letter-spacing: 3px;;
+}
+
+#recipeSearch img{
+    width: 80%;
+    border-radius: 8px;
+    box-shadow: 2px 2px 3px rgb(20, 20, 20);
+    margin-bottom: 30px;
+}
+
+#wallBck{
+    margin-top: 650px;
+    height: 2000px;
+    padding-top: 70px;
+    background: url(../images/greenBack.jpeg);
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+#wallBck h1{
+    background: rgb(90, 88, 88);
+}
+
+#theWall{
+    width: 70%;
+    height: 1700px;
+    background-color: rgb(90, 88, 88);
+    box-shadow: 3px 3px 4px black;
+    margin: auto;
+    opacity: .97;
+    position: absolute;
+    left: 15%;
+    border-radius: 8px;
+    padding: 30px;
+    overflow: auto;
+    
+}
+
+#end{
+    padding: 200px;
+    width: fit-content;
+    margin:auto;
+    border-radius: 8px;
+    box-shadow: 2px 2px 2px black;
+    text-align: center;
+    background-color: rgb(90, 88, 88);
+    margin: 50px auto;
+}
+
+#theSync{
+    border: 2px solid rgb(219, 219, 219);
+    width: fit-content;
+    border-radius: 8px;
+    padding: 10px;
+    margin: auto;
+}
+
+.post, .comment{
+    padding: 30px;
+    width: fit-content;
+    margin-left: 30px;
+    margin-top: 15px;
+    border-radius: 8px;
+    display: flex;
+}
+
+.post p, .comment p{
+    margin-left: 10px;
+}
+
+.post a, .comment a{
+    margin-left: 10px;
+}
+
+.post{  
+    background-color: #fafab9;
+}
+
+.comment{
+    background-color: #cfdbb8;
+    margin-left: 100px;
+}
+
+#theWall li{
+    display: block;
+}
+
+.post img{
+    height: 50px;
+}
+.comment img{
+    height: 50px;
+}
+
+.lovIt{
+    margin-left:auto;
+    color: #da8943;
+}
+
+.lovIt:hover{
+    color: #da8943;
+}
+
+.lovIt:visited{
+    color: #da8943;
+}
+
+.lovIt:active{
+    color: #f52326;
+}
+
+a.userName{
+    font-size: 14pt;
+    color: #da8943;
+    font-weight: bold;
+}
+
+.commentDelete:hover{
+    color: #f52326;
+}
+
+.commentDelete{
+    color: rgb(90, 88, 88);
+    text-decoration: underline;
+    transition: color 150ms;
+}
+
+img#recipeImg{
+    height: 250px;
+    border-radius: 8px;
+    margin: 5px 0;
+}
+
+.clearBtn{
+    background-color: transparent;
+    outline: none;
+    border: none;
+    color: black;
+}
+
+.instruc{
+    color: #2d4403; 
+    font-weight: bold;
+    font-size: 14pt;
+    border-top: 3px double #2d4403;
+    border-bottom: 3px double #2d4403;
+}
+
+.instruc:hover{
+    background-color: rgb(204, 204, 204);
+}
+
+#addSync{
+    width: fit-content;
+    
+    margin-left: 43%;
+}
+
+#addSync button{
+    background-color: transparent;
+    border: none;
+    padding: 10px;
+    margin: 20px 0;
+    outline:none;
+}
+
+#postModal{
+    display: none;
+    width: fit-content;
+    background-color: rgb(36, 36, 36);
+    padding: 20px;
+    height: fit-content;
+    border-radius: 8px;
+    position: absolute;
+    left: 35%;
+    z-index: 1;
+}
+
+#wallPost{
+    display: flex;
+    flex-direction: column;
+}
+
+#wallPost textarea, #wallPost input{
+    margin-bottom: 15px;
+}
+
+#closeButtn{
+    width: fit-content;
+    margin: auto;
+}
+
+.closeButtn{
+    width: fit-content;
+    margin: auto;
+}
+
+.recipeBoxModal{
+    width: fit-content;
+    position: absolute;
+    margin: auto;
+    padding: 25px;
+    background-color: rgb(124, 123, 123);
+    border-radius: 8px;
+    box-shadow: 2px 2px 2px black;
+    display: none;
+}
+
+#passwordModal{
+    padding: 20px;
+    background-color: rgb(124, 123, 123);
+    border-radius: 8px;
+    box-shadow: 2px 2px 2px black;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: none;
+    color: black;
+}

@@ -1,0 +1,41 @@
+*{
+    margin:0;
+    padding:0;
+    cursor: default;
+    /* font-family: 'Poppins', sans-serif; */
+}
+
+body{
+    background: url(../images/colors.jpg);
+    background-size: cover;
+    padding-bottom: 30px;
+}
+
+.container{
+    background-color: rgb(43, 43, 43);
+    width: 45%;
+    margin-left: 20px;
+    padding: 20px;
+    padding-top: 120px;
+    color: white;
+    border-radius: 8px;
+    box-shadow: 2px 2px 2px black;
+    opacity: .93;
+}
+
+#creationForm{
+    display: flex;
+    flex-direction: column;
+    padding: 50px;
+}
+
+#creationForm input, #creationForm textarea{
+    padding: 10px;
+    outline:none;
+    border:none;
+    border-radius: 8px;
+    font-size: 14pt;
+    width: 80%;
+    margin: auto;
+    margin-bottom: 10px;
+}

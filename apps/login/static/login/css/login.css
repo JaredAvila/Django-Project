@@ -1,0 +1,93 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    background: url(../images/pot.jpg);
+    background-size: 100%;
+    /* background-position: center; */
+    background-repeat: no-repeat;
+    font-family: 'Poppins', sans-serif;
+}
+.container{
+    padding: 50px;
+    text-align: center;
+    background-color: rgb(49, 49, 49);
+    opacity: .9;
+    width: fit-content;
+    margin: auto;
+    margin-top: 50px;
+    border-radius: 25px;
+}
+
+h1{
+    font-size: 36pt;
+    font-weight: bold;
+    letter-spacing: 3px;
+    margin: 0;
+    margin-bottom: 25px;
+    color: rgb(204, 203, 203);
+}
+
+h1 span{
+    color:#da8943;
+    font-size: 80pt;
+    font-family: 'Permanent Marker', cursive;
+}
+form{
+    width: fit-content;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+input{
+    margin-bottom: 25px;
+    border-radius: 25px;
+    border: none;
+    padding: 10px;
+    text-align: center; 
+    background-color: rgb(204, 203, 203);
+    font-size: 16pt;
+    outline: none;
+    transition: background-color .5s;
+}
+input:focus{
+    background-color: white;
+}
+
+input#submit{
+    background-color:#da8943;
+    color: rgb(204, 203, 203);
+    box-shadow: 3px 3px 10px black;
+    outline: none;
+    cursor: pointer;
+    transition: box-shadow 100ms;
+}
+
+a{
+    cursor: pointer;
+}
+/* input#submit:hover{
+    background-color: white;
+    color: #da8943;
+} */
+input#submit:active{
+    box-shadow: none;
+}
+
+p a{
+    color: #da8943;
+    text-decoration: none;
+    transition: color .5s;
+}
+
+p{
+    color: rgb(204, 203, 203);
+    text-decoration: none;
+}
+
+a:hover{
+    color: rgb(204, 203, 203);
+}
